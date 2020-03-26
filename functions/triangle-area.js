@@ -1,3 +1,8 @@
+/**
+ * Get the are of a triangle
+ * @param {number} base 
+ * @param {number} height 
+ */
 function areaTriang(base, height) {
     return (base * height) / 2;
 }
