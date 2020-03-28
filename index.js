@@ -2,11 +2,19 @@
 const areaTriang = require('./functions/triangle-area')
 const areaCircle = require('./functions/circle-area')
 const squareOperations = require('./functions/square-operations');
+const Matrix = require('./functions/matrix');
 
 
-console.log('Test');
-console.log('El área de un triangulo es: ', areaTriang(5, 2));
-console.log('El área de un circulo es:', areaCircle(4));
-console.log('El área del cuadrado es: ', squareOperations.getArea(5));
-console.log('El perimetro del cuadrado es: ', squareOperations.getPerimeter(5));
-console.log('La diagonal del cuadrado es: ', squareOperations.getDiagonal(5));
+
+const matrixT = [
+    [1, 9, 5],
+    [3, 5, 9],
+    [8, 5, 5]
+];
+
+const myMatrix = Matrix(matrixT)
+/*console.log('TESTING SUBMATRIX:', matrixTest.getSubmatrix(matrixT, 0))
+console.log('TESTING SUBMATRIX:', matrixTest.getSubmatrix(matrixT, 1))
+console.log('TESTING SUBMATRIX:', matrixTest.getSubmatrix(matrixT, 2))*/
+
+console.log(myMatrix.getDeterminant());
