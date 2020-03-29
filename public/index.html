@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
   <div class="container">
@@ -19,10 +19,17 @@
 
   </div>
 
+
+  <form action="/users/create" method="post">
+    <input type="text" name="firstName" placeholder="Nombre">
+    <input type="text" name="lastName" placeholder="Apellido">
+    <input type="submit" value="Enviar">
+  </form>
+
   <script>
     var hello = 'Hello';
     console.log(hello);
   </script>
-  <script src="./js/matrix.js"></script>
+  <script src="/js/matrix.js"></script>
 </body>
 </html>

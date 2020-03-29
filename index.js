@@ -1,32 +1,52 @@
-const getTriangleArea = require("./functions/triangle-area");
-const getCircleArea = require("./functions/circle-area");
-const squareOperations = require("./functions/square-operations");
+const fs = require('fs');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const app = express();
 
-const Matrix = require("./functions/matrix");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-console.log("Test");
+app.use("/", express.static("public"));
 
-console.log("El area de mi triangulo es: ", getTriangleArea(5, 4));
-console.log("El area de mi circulo es: ", getCircleArea(5));
+app.get("/", function(req, res) {
+  // res.send('Hello World')
+  const filePath = path.join(__dirname, "public/index.html");
+  res.sendFile(filePath);
+});
 
-console.log("El area del cuadrado es:", squareOperations.getArea(5.3));
+const databasePath = path.join(__dirname, 'data/database.json');
 
-console.log(
-  "El perimetro del cuadrado es:",
-  squareOperations.getPerimeter(5.3)
-);
-console.log("La diagonal del cuadrado es:", squareOperations.getDiagonal(5.3));
+function readDatabaseFile() {
+  const data = JSON.parse(fs.readFileSync(databasePath, 'utf-8'));
+  return data;
+}
 
-const matrixT = [
-  [1, 9, 5],
-  [3, 7, 6],
-  [9, 4, 2]
-];
+function getDatabaseTable(table) {
+  const fileData = readDatabaseFile();
+  return fileData[table];
+}
 
-const myMatrix = Matrix(matrixT);
+function insertRecordIntoDatabase(table, record) {
+  const data = readDatabaseFile();
+  data[table].push(record);
 
-/* console.log("TESTING SUBMATRIX:", matrixTest.getSubMatrix(matrixT, 0));
-console.log("TESTING SUBMATRIX:", matrixTest.getSubMatrix(matrixT, 1));
-console.log("TESTING SUBMATRIX:", matrixTest.getSubMatrix(matrixT, 2)); */
+  fs.writeFileSync(databasePath, JSON.stringify(data), { encoding: 'utf-8' });
+}
 
-console.log(myMatrix.getDeterminant());
+app.get("/users", function(req, res) {
+  const users = getDatabaseTable('users');
+  res.json(users);
+});
+
+app.post("/users/create", function(req, res) {
+  console.log("Cuerpo de la petición", req.body);
+
+  insertRecordIntoDatabase('users', req.body);
+
+  res.redirect("/");
+});
+
+app.listen(3000, function() {
+  console.log("App is running at http://localhost:3000");
+});
