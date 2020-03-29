@@ -1,0 +1,22 @@
+{
+  "name": "class-server",
+  "version": "1.0.0",
+  "description": "This a example server for node js class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexVanHell/nodejs-class.git"
+  },
+  "author": "Alejandro Villarroel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexVanHell/nodejs-class/issues"
+  },
+  "homepage": "https://github.com/AlexVanHell/nodejs-class#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
