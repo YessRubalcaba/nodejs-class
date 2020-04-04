@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/styles/main.css">
-</head>
-<body>
-  <div class="container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Aqui va input y boton -->
+      <h2 class="title">
+        Introduce el tamaño de tu matriz
+      </h2>
 
-    <!-- Aqui va input y boton -->
+      <div class="form-control">
+        <input type="text" id="matrixSize" placeholder="Tamaño de la matriz" />
 
-    <div class="table">
-      Aqui va la tabla
+        <button class="btn btn-blue" onclick="drawMatrix()">
+          Aceptar
+        </button>
+      </div>
+
+      <div class="table">
+
+        <!-- <div class="table-row">
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+        </div>
+        <div class="table-row">
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+        </div> -->
+
+      </div>
+
+      <!-- Aqui un boton -->
+      <div>
+        <button class="btn btn-red">
+          Calcular determinante
+        </button>
+      </div>
     </div>
 
-    <!-- Aqui un boton -->
+    <form action="/users/create" method="post">
+      <input type="text" name="firstName" placeholder="Nombre" />
+      <input type="text" name="lastName" placeholder="Apellido" />
+      <input type="submit" value="Enviar" />
+    </form>
 
-  </div>
-
-
-  <form action="/users/create" method="post">
-    <input type="text" name="firstName" placeholder="Nombre">
-    <input type="text" name="lastName" placeholder="Apellido">
-    <input type="submit" value="Enviar">
-  </form>
-
-  <script>
-    var hello = 'Hello';
-    console.log(hello);
-  </script>
-  <script src="/js/matrix.js"></script>
-</body>
+    <script src="/js/matrix.js"></script>
+  </body>
 </html>

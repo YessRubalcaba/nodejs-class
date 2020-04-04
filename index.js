@@ -4,6 +4,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const app = express();
 
+const Matrix = require('./exercise/functions/matrix');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -45,6 +47,15 @@ app.post("/users/create", function(req, res) {
   insertRecordIntoDatabase('users', req.body);
 
   res.redirect("/");
+});
+
+app.post('/matrix', function(req, res) {
+  const resultMatrix = Matrix(req.body.matrix);
+
+  res.json({
+    message: 'Exitoso',
+    result: resultMatrix.getDeterminant()
+  });
 });
 
 app.listen(3000, function() {

@@ -3,7 +3,63 @@
 }
 
 .table {
-  background-color: black;
-  color: white;
   padding: 20px;
+}
+
+.table .table-row {
+  margin-bottom: 3px;
+}
+
+.table input.matrix-item {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 30px;
+  color: #616161;
+  border-radius: 6px;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  padding: 16px;
+}
+
+.form-control {
+  vertical-align: middle;
+}
+
+.form-control input {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  padding: 0 12px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: steelblue;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: tomato;
+}
+
+.btn-blue:hover, .btn-red:hover {
+  background-color: #000;
 }
