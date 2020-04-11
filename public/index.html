@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css" />
 </head>
+
 <body>
- <div class="container">
-<!-- Aqui va input y boton -->
+    <div class="container">
+        <!-- Aqui va input y boton -->
+        <h2 class="title">
+            Introduce el tamaño de tu matriz
+        </h2>
 
-<div class="table">
-    Aqui va la tabla 
-</div>
+        <div class="form-control">
+            <input type="text" id="matrixSize" placeholder="Tamaño de la matriz" />
 
-<!--Aqui un boton-->
+            <button class="btn btn-blue" onclick="drawMatrix()">
+                Aceptar
+            </button>
+        </div>
 
- </div>
+        <div class="table">
 
-    <script>
-        var hello = 'Hello'
-        console.log (hello);
-    </script>
-    <script src="./js/matrix.js"></script>
+            <!-- <div class="table-row">
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+        </div>
+        <div class="table-row">
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+          <input type="text" class="matrix-item" />
+        </div> -->
+
+        </div>
+
+        <!-- Aqui un boton -->
+        <div>
+            <button class="btn btn-red" onclick="getDeterminant()">
+                Calcular determinante
+            </button>
+            <h4>
+                La dterminante es:
+                <span id="result"></span>
+            </h4>
+        </div>
+    </div>
+
+    <form action="/users/create" method="post">
+        <input type="text" name="firstName" placeholder="Nombre" />
+        <input type="text" name="lastName" placeholder="Apellido" />
+        <input type="submit" value="Enviar" />
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="/js/matrix.js"></script>
 </body>
+
 </html>

@@ -1,55 +1,67 @@
-/**
- * Get a submatrix deleting a row and column
- * @param {number[][]} matrix Original
- * @param {number} column Index of the column to delete
- */
-function getSubmatrix(matrix, column) {
-    const resultSubmatrix = [];
-    for (let i = 1; i < matrix.length; i++) {
-        //This adds a new row in the submatrix
-        resultSubmatrix.push([]);
 
-        for (let j = 0; j < matrix.length; j++) {
-            if (j !== column) {
-                resultSubmatrix[resultSubmatrix.length - 1].push(matrix[i][j]);
-            }
+function drawMatrix() {
+    const matrixSizeInput = document.getElementById('matrixSize');
+    const size = matrixSizeInput.value;
+
+    const table = document.getElementsByClassName('table')[0];
+
+    table.innerHTML = '';
+
+    for (let i = 0; i < size; i++) {
+        const rowElement = document.createElement('div');
+        rowElement.className = 'table-row';
+
+        for (let j = 0; j < size; j++) {
+            const inputElement = document.createElement('input');
+            inputElement.type = 'text';
+            inputElement.className = 'matrix-item';
+
+            rowElement.appendChild(inputElement);
         }
+
+        table.appendChild(rowElement);
     }
-    return resultSubmatrix;
-
-
-
 }
 
-/**
- * 
- * @param {number[][]} matrix 
- */
-function Matrix(matrix) {
-    return {
-        getDeterminant: function (auxMatrix = matrix) {
-            let totalSum = 0;
-            let sign = 1;
+function getDeterminant() {
+    console.log('I\'m working');
 
-            if (auxMatrix.length === 1) {
-                return auxMatrix[0][0];
+    const table = document.getElementsByClassName("table")[0];
+    const matrix = [];
+
+
+    const rows = table.getElementsByClassName('table-row');
+
+    console.log('ROWS', rows);
+
+    for (const row of rows) {
+        matrix.push([]);
+
+        const inputs = row.getElementsByClassName('matrix-item');
+
+        for (const column of inputs) {
+            let value = column.value;
+
+            if (value === '') {
+                value = 0;
+            } else {
+                value = Number(value);
             }
-        
-
-            //Iterate column
-            for (let i = 0; i < auxMatrix.length; i++) {
-                const elem = auxMatrix[0][i];
-                const submatrix = getSubmatrix(auxMatrix, i)
 
 
-
-                totalSum += sign * (elem * this.getDeterminant(submatrix));
-                sign = -sign;
-            }
-
-            return totalSum;
-
+            matrix[matrix.length - 1].push(value);
         }
-    };
+    }
+
+    const resultElement = document.getElementById('result');
+
+
+    console.log('Se hace la petició al server');
+    axios.post('http://localhost:3000/matrix', { matrix: matrix })
+        .then(function (response) {
+            console.log('Respuesta del servidor:', response);
+
+            resultElement.innerHTML = response.data.result;
+        });
 
 }
