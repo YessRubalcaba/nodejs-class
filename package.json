@@ -1,0 +1,28 @@
+{
+  "name": "class-server",
+  "version": "1.0.0",
+  "description": "This a example server for node js class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YessRubalcaba/nodejs-class.git"
+  },
+  "author": "yessenia Rubalcaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YessRubalcaba/nodejs-class/issues"
+  },
+  "homepage": "https://github.com/YessRubalcaba/nodejs-class#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
